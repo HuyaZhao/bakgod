@@ -4,7 +4,7 @@
 
 ## Usage
 
-感谢 [https://github.com/wenbo](wenbo)  提供空间. thanks.
+感谢 [https://github.com/wenbo](https://github.com/wenbo)  提供空间. thanks.
 
 demo: [http://0371zhong.com:3389/](http://0371zhong.com:3389/).
 

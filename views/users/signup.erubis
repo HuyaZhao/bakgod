@@ -1,0 +1,19 @@
+<div class="reg_form">
+<form action="/users/add" method="POST" autocomplete="off">
+  <div class="reg_title">注册</div>
+  <div class="reg_memo">欢迎！这里是一个简单、温暖的小社区。</div>
+  <div class="reg_item">邮箱</div>
+  <% if @client_errors %>
+    <%= erb :'users/signup_error' %>
+  <% else %>
+      <%= erb :'users/signup_normal' %>
+  <% end %>
+  <div class="reg_input">
+    <input tabindex="5" type="submit" class="reg_bottom" value="立即注册" onclick="return register.submitUserRegisterOne();" />
+  </div>
+</form>
+</div>
+<div class="reg_side">
+<div>已经有帐号了?</div>
+<a href="/login">马上登录</a>
+</div>

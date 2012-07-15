@@ -1,0 +1,50 @@
+<div class="sidebar">
+  <div class="box" style="">
+    <div style="height: 120px;">
+      <div style="float:left; margin-right: 10px;">
+        <a href="#" style="display:block;">
+          <img width="100px" height="100px" src="<%= @member.avatar(:medium) %>" />
+        </a>
+      </div>
+      <div style="">
+        <div style="color:#636A86"><%= @member.username %></div>
+        <div style="margin-top: 10px; color: #808080; word-wrap: break-word;overflow: hidden;"></div>
+        <div style="margin-top: 10px; color:#636A86; font-size: 12px; color: #a0a0a0;"><%= @member.description %></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--主体-->
+<div class="main radius">
+  <div class="home-header radius_top">
+    <div style="padding: 5px; color: #808080;">
+      <%= @member.username %> 最近发表的主题
+    </div>
+  </div>
+  <% @topics.each do |topic| %>
+      <div class="stream-item" id="topic_10119" tid="10119">
+        <div  class="mod status-item ">
+          <div class="text">
+            <span><a class="web_link" href="/topics/<%= topic.id %>"><%= topic.title %></a></span>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  <div style="padding: 15px 8px; text-align: center;">
+  </div>
+
+  <div class="home-header radius_top">
+    <div style="padding: 5px; color: #808080;">
+      <%= @member.username %> 最近回复过的主题
+    </div>
+  </div>
+  <% @replies.each do |topic| %>
+      <div class="stream-item" id="topic_10119" tid="10119">
+        <div  class="mod status-item ">
+          <div class="text">
+            <span><a class="web_link" href="/topics/<%= topic.id %>"><%= topic.title %></a></span>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

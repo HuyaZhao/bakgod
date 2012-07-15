@@ -1,0 +1,23 @@
+<div>
+  <input tabindex="1" type="text" class="title" name="users[email]" maxlength="40" value="" id="email" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span class="validator vError" style="display:none;" id="emailerror"><i><em></em></i></span>
+  <% if @client_errors[:email] %><span id="emailerror" style="display: inline-block;" class="validator vError"><i><em></em>请输入正确的邮箱地址</i></span><% end %>
+</div>
+<div class="reg_item">密码</div>
+<div>
+  <input tabindex="2" type="password" class="title" name="users[password]" maxlength="20" value="" id="password" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span style="display: none;" class="validator vError" id="passworderror"></span>
+  <% if @client_errors[:password] %><span id="passworderror" class="validator vError" style="display: inline-block;"><i><em></em>请输入6-16位长度的密码</i></span><% end %>
+</div>
+<div class="reg_item">确认密码</div>
+<div>
+  <input tabindex="3" type="password" class="title" name="users[password_confirmation]" maxlength="20" value="" id="repassword" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span style="display: none;" class="validator vError" id="resPassword2error"></span>
+  <% if @client_errors[:password_confirmation] %><span id="resPassword2error" class="validator vError" style=""><i><em></em>密码和确认密码输入不一致</i></span><% end %>
+</div>
+<div class="reg_item">用户名</div>
+<div>
+  <input tabindex="4" type="text" class="title" name="users[username]" maxlength="20" value="" id="username" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span style="display: none;" class="validator vError" id="usernameerror"></span>
+  <% if @client_errors[:username] %><span id="usernameerror" class="validator vError" style=""><i><em></em>用户名不合法</i></span><% end %>
+</div>

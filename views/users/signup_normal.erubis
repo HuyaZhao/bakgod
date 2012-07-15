@@ -1,0 +1,19 @@
+<div>
+  <input tabindex="1" type="text" class="title" name="users[email]" maxlength="40" value="" id="email" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span class="validator vError" style="display:none;" id="emailerror"><i><em></em></i></span>
+</div>
+<div class="reg_item">密码</div>
+<div>
+  <input tabindex="2" type="password" class="title" name="users[password]" maxlength="20" value="" id="password" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span style="display: none;" class="validator vError" id="passworderror"></span>
+</div>
+<div class="reg_item">确认密码</div>
+<div>
+  <input tabindex="3" type="password" class="title" name="users[password_confirmation]" maxlength="20" value="" id="repassword" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span style="display: none;" class="validator vError" id="resPassword2error"></span>
+</div>
+<div class="reg_item">用户名</div>
+<div>
+  <input tabindex="4" type="text" class="title" name="users[username]" maxlength="20" value="" id="username" onfocus="javascript:register.removeerrorInfo(this.id);" onblur="javascript:register.checkUserRegisterOneFocus(this.id);javascript:register.unDiv(this.id);" />
+  <span style="display: none;" class="validator vError" id="usernameerror"></span>
+</div>

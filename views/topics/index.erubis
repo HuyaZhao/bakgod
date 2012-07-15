@@ -1,0 +1,76 @@
+<div class="comment" style=" display: none;">
+  <div class="pane-toolbar">
+    <a id="comment_close" class="close" href="">×</a>
+  </div>
+  <div class="comments-items">
+    <div class="loading" style="display:none; text-align: center; padding: 20px 0px;">
+      <div><img src="/img/loading.gif" /></div>
+      <div style="color: #808080;">加载中</div>
+    </div>
+    <div></div>
+    <div id="comments_list">
+    </div>
+  </div>
+</div>
+<div class="sidebar">
+  <div class="box" style="">
+    <div style="color: #808080;">热门节点</div>
+    <div style="margin-top: 5px;">
+      <% @nodes.each do |field, value| %>
+          <a class="item_node item_node_add" href="/nodes/<%= value %>"><%= field %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top: 20px;">
+    <div style="color: #808080;">热门标签</div>
+    <div style="margin-top: 5px;">
+      <% @hottags.each do |tag| %>
+          <a class="item_node item_node_add" href="/topics/tag/<%= tag %>"><%= tag %></a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!--主体-->
+<div class="main radius">
+<div class="home-header radius_top">
+  <div style="padding: 5px; color: #808080;">
+    有趣的就在这里……
+  </div>
+</div>
+<% @topics.each_with_index do |topic, n| %>
+<div class="stream-item" id="topic_6500" tid="6500">
+  <div  class="mod status-item ">
+    <div class="hd">
+      <a class="icon" target="_blank" href="/members/<%= @users[n].account_id %>">
+        <img alt="<%= @users[n].username %>" src="<%= @users[n].avatar(:thumb) %>" />
+      </a>
+    </div>
+    <div class="text new-font">
+      <span><a class="web_link" href="/topics/<%= topic[0].id %>"><%= topic[0].title %></a></span>
+      <span onselectstart="return false;" class="icon-comments">
+        <span class="comments-count"><%= topic[1].reply_count %></span>
+      </span>
+    </div>
+    <div class="text font-11">
+      <span><a target="_blank" href="/members/<%= @users[n].account_id %>"><%= @users[n].username %></a>
+        创建于<abbr class="timeago" title="<%= topic[1].created_at %>"><%= topic[1].created_at %> </abbr>
+      </span>
+      <% unless topic[1].last_reply_user_id.blank? %>
+        <span><a target="_blank" href="/members/<%= topic[1].last_reply_user_id %>"><%= topic[1].last_reply_username %></a>
+          回复于<abbr class="timeago" title="<%= topic[1].last_reply_time %>"><%= topic[1].last_reply_time %> </abbr>
+        </span>
+      <% end %>
+    </div>
+    <div class="text font-11">
+      <% topic[1].format_tags.each do |tag| %>
+          <a href="/topics/tag/<%= tag %>" class="tag tag_5"><%= tag %></a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+<div style="padding: 15px 8px; text-align: center;">
+  <a style="text-decoration:none; color: #808080;" class="page_item" href="#">更多话题</a>
+</div>
+</div>

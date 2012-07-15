@@ -1,0 +1,66 @@
+<div class="account_main">
+  <div class="account_header">
+    <h1>
+      <img id="thumb48" width="30px" height="30px" alt="nizaina" src="<%= @user.avatar(:thumb) %>" />
+      <%= @user.username %>的设置
+    </h1>
+    <ul class="tabs clearfix">
+      <li class="active" id="tabs-profile"><a href="#">帐 号</a></li>
+      <li id="tabs-password"><a href="#">密 码</a></li>
+    </ul>
+  </div>
+
+  <div class="account_body" style="padding: 20px 30px;" id="edit-username-desc">
+      <div class="item" style="height: 100px;">
+        <label>我的头像</label>
+        <img id="medium100" width="100px" height="100px" alt="<%= @user.username %>" src="<%= @user.avatar(:medium) %>" />
+        <div class="upload_avatar_form">
+          <p class="memo">请上传JPG、PNG格式的图片,大小不要超过1M</p>
+          <div style="margin-top: 10px;width: 300px">
+            <noscript>
+              <p>Please enable JavaScript to use file uploader.</p>
+            </noscript>
+          </div>
+          <img id="loading" src="/img/loading.gif" style="display:none;">
+          <input id="fileToUpload" type="file" name="file" style="width: 200px;">
+          <button class="button" id="buttonUpload" style="width: 80px;">上传</button>
+        </div>
+      </div>
+      <div class="item">
+        <label>昵称</label>
+        <input id="username" name="name" class="text" maxlength="15" type="text" value="<%= @user.username %>"/>
+        <span style="display: none;" class="validator vError" id="usernameerror"></span>
+      </div>
+      <div class="item">
+        <label>简介</label>
+        <textarea maxlength="50" rows="3" name="description" id="user-desc"><%= @user.description %></textarea>
+      </div>
+      <div class="submit_area">
+        <input class="btn" type="button" value="保存" onclick="javascript: register.update_username_desc();" />
+      </div>
+  </div>
+
+  <div class="account_body" style="padding: 20px 30px;display: none;" id="edit-user-password">
+    <div class="item">
+      <label>旧密码</label>
+      <input style="width: 200px;" id="old-pwd" class="text" type="password" value=""/>
+      <span style="display: none;" class="validator vError" id="old-pwd-error"></span>
+    </div>
+    <div class="item">
+      <label>新密码</label>
+      <input style="width: 200px;" id="password" class="text" type="password" value=""/>
+      <span style="display: none;" class="validator vError" id="passworderror"></span>
+    </div>
+    <div class="item">
+      <label>确认密码</label>
+      <input style="width: 200px;" id="repassword" class="text" type="password" value=""/>
+      <span style="display: none;" class="validator vError" id="resPassword2error"></span>
+    </div>
+    <div class="submit_area">
+      <input class="btn" type="button" value="保存" onclick="javascript: register.update_user_pwd();" />
+    </div>
+  </div>
+
+
+</div>
+

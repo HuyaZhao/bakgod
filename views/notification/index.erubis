@@ -1,0 +1,42 @@
+<div class="sidebar">
+
+  <div class="box" style="">
+    <div>
+      <div style="float:left; margin-right: 10px;">
+        <a href="/members/<%= current_user.account_id %>" style="display:block;">
+          <img width="100px" height="100px" src="<%= current_user.avatar(:medium) %>" />
+        </a>
+      </div>
+      <div style="">
+        <div style="color:#636A86"><%= current_user.username %></div>
+        <div style="margin-top: 10px; color: #808080; word-wrap: break-word;overflow: hidden;">
+          <%= current_user.description %>
+        </div>
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+    <div style="border-top:1px solid #E2E2E2; margin-top: 20px; padding-top:10px;">
+    </div>
+  </div>
+</div>
+<!--主体-->
+<div class="main radius">
+  <div class="home-header radius_top">
+    <div style="padding: 5px; color: #808080;">
+      我的提醒 (<span id="notifications-counts"><%= @counts %></span>条)<span style="float: right; margin-right: 5px;"><a id="notifi_read_all" style="color: #808080;" href="#">全部清除</a></span>
+    </div>
+  </div>
+  <div style="padding: 10px" id="notifications-all">
+    <% if @counts > 0 %>
+        <% @notifs.each do |notf| %>
+            <div style="padding: 8px 0px;" id="notifications-<%= notf[0] %>">
+              <a style="color: #808080" href="/members/<%= notf[1]['user_id'] %>"><%= notf[1]['username'] %></a>
+                 <span style="color: #808080"><%= NOTIFICATION_TYPE[notf[1]['type']] %></span>
+              <a style="color: #4B8DC5;" target="_blank" href="/topics/<%= notf[1]['topic_id'] %>/notifications/<%= notf[0] %>/read#comment_<%= notf[1]['the_where'] %>"><%= notf[1]['title'] %></a>
+              <% if notf[1]['readed'] == 1 %><a class="tag tag_11">已读</a><% end %>
+              <a title="清除这条提醒" class="notifi_read" data-id="<%= notf[0] %>" style="color: #808080; margin-left: 20px;" href="#">x</a>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

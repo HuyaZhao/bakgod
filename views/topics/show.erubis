@@ -1,0 +1,96 @@
+<div class="sidebar">
+  <div class="box" style="">
+    <div style="height: 100px;">
+      <div style="float:left; margin-right: 10px;">
+        <a href="/members/<%= @topic_user.account_id %>" style="display:block;" target="_blank">
+          <img width="100px" height="100px" alt="<%= @topic_user.username %>" src="<%= @topic_user.avatar(:medium) %>" />
+        </a>
+      </div>
+      <div style="">
+        <div style="color:#636A86"><%= @topic_user.username %></div>
+        <div style="margin-top: 10px; color: #808080; word-wrap: break-word;overflow: hidden;"><%= @topic_user.description %></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #E2E2E2; margin-top: 20px;">
+    </div>
+  </div>
+  <br>
+</div>
+<div class="main radius">
+  <div class="topic">
+    <div class="topic_header"  style=" border-bottom: 1px solid #E2E2E2;" >
+      <h1 style="font-size: 18px; font-weight: blod">
+        <a class="tag tag_12" href="/tag/%E9%9F%B3%E4%B9%90">音乐</a><%= @topic.title %>
+      </h1>
+      <div class="topic_info">
+        <span><%= @topic_attribute.created_at.strftime('%Y-%m-%d %H:%M:%S') %>发布</span>
+        <span><%= @topic_attribute.click_count %>次访问</span>
+        <span><%= @topic_attribute.reply_count %>个回复</span>
+      </div>
+      <div class="text font-11">
+        <% @topic_attribute.format_tags.each do |tag| %>
+            <a href="/topics/tag/<%= tag %>" class="tag tag_5"><%= tag %></a>
+        <% end %>
+      </div>
+    </div>
+    <div style="margin-top:15px; line-height: 23px; overflow: hidden; word-wrap: break-word;">
+      <p><%= @topic.content %></p>
+    </div>
+  </div>
+</div>
+
+<div class="main radius" style="margin-top: 20px;">
+<div class="reply_list" style="padding: 10px 16px">
+<div style="padding: 5px 0px; margin-bottom: 5px; text-align: center;">
+  <a style="color: #4B8DC5; " href="#"></a>
+  &nbsp;<a id="quick_reply" href="#reply_box" style="color: #808080; float: right;">添加回复</a>
+</div>
+<div id="topic-comments-all" data="<%= @topic.id %>">
+<% @replies.each_with_index do |reply, n| %>
+<a name="comment_<%= reply.the_where %>" id="comment_<%= reply.the_where %>"></a>
+<div class="comment-item">
+  <div class="icon">
+    <a href="/members/<%= @rusers[n].account_id %>" target="_blank">
+      <img src="<%= @rusers[n].avatar(:thumb) %>" alt="<%= @rusers[n].username %>" />
+    </a>
+  </div>
+  <div class="content">
+    <p style="">
+      <a class="to" href="/members/<%= @rusers[n].account_id %>" target="_blank"><%= @rusers[n].username %></a>
+      <span class="comment-time"><%= reply.created_at %></span>
+      <span class="comment-time" style="float: right;">#<%= reply.the_where %></span>
+
+        <span class="comment-time">
+            <a data="<%= @rusers[n].username %>" class="go_at to" href="javascript:;">回复</a>
+        </span>
+        <% if login? && current_user.account_id == reply.user_id %>
+            <span class="comment-time"><a href="javascript:;" class="comment-del" data="<%= reply.id %>">删除</a></span>
+        <% end %>
+    </p>
+    <p style="margin-top: 5px; line-height: 23px;">
+      <span class="comment-text" id="comment-text-<%= reply.id %>"><%= reply.content %></span>
+    </p>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+<% if login? %>
+    <div class="main radius reply_box" style="margin-top: 20px;" >
+      <div style="color: #A8B1BA; padding:5px 10px 0px 10px;">
+        <span>你的回应</span>
+        <span style="float: right;"><a style="color: #808080; margin-right: 10px;" href="#top">回到顶部</a></span>
+      </div>
+      <div style="padding: 10px 16px;">
+          <div>
+            <textarea id="reply_content" name="reply[content]" class="editor" style="width: 535px; height: 120px"></textarea>
+          </div>
+          <div class="comment-submit" style="margin-top: 10px;">
+            <input type="hidden" name="reply[topic_id]" value="<%= @topic.id %>">
+            <input class="submit" type="button" value="回复" onclick="javascript: create_comments();">
+          </div>
+        <a name="reply_box" id="reply_box"></a>
+      </div>
+    </div>
+<% end %>

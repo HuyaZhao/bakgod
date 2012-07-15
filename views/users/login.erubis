@@ -1,0 +1,29 @@
+<div class="reg_form">
+  <form action="/sessions" method="POST">
+    <div class="reg_title">登录</div>
+    <div class="reg_memo">
+    </div>
+    <div class="">邮箱</div>
+    <div>
+      <input tabindex="1" type="text" class="title" name="users[email]" value="" id="email" />
+    </div>
+    <div>密码</div>
+    <div>
+      <input tabindex="2" type="password" class="title" name="users[password]" value="" />
+    </div>
+    <div>
+        <span>
+            <input tabindex="3" style="vertical-align: middle"  type="checkbox" name="remember" value="on"> 记住我
+        </span>
+    </div>
+    <div class="reg_input">
+      <input type="hidden" name="from" value="/" />
+      <input tabindex="4" type="submit" class="reg_bottom" value="登录"/>
+    </div>
+  </form>
+</div>
+
+<div class="reg_side">
+  <div>还没有帐号?</div>
+  <a href="/signup">马上注册</a>
+</div>

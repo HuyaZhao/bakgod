@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>baKgod's</title>
+  <meta content="简单、温暖的小社区。" name="description"/>
+  <link href="/css/bbs.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<a id="top" name="top"></a>
+<div class="header_container">
+  <div class="container">
+    <div class="logo"><a href="/">BakGod</a></div>
+    <div class="nav">
+      <ul>
+        <li>
+          <a href="/topics" style="color: #fff;">首页</a>
+        </li>
+        <li>
+          <a href="/topics/new">发表话题</a>
+        </li>
+      </ul>
+    </div>
+    <% if login? %>
+        <div class="pro">
+          <div class="login_user">
+            <a href="#" class="profile-links">
+                            <span id="profile-image">
+                                <img src="<%= current_user.avatar(:thumb) %>" />
+                            </span>
+            </a>
+            <span class="screen-name"><%= current_user.username %></span>
+            <div class="dropdown">
+              <ul class="user-dropdown" style="text-align: center;">
+                <li><a href="/users/profile">设置</a></li>
+                <li><a href="/logout">退出</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pro" style="padding: 10px 5px;">
+          <% ntf_count = current_user.notifications %>
+          <a title="<%= ntf_count %>条未读提醒" href="/notifications" class="notifi-num"><%= ntf_count %></a>
+        </div>
+    <% else %>
+        <div class="pro">
+          <ul class="reg_link">
+            <li>
+              <a href="/signup">注册</a>
+            </li>
+            <li>
+              <a href="/login">登录</a>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <% if flash[:notice] %><div class="alert-message"><%= flash[:notice] %></div><% end %>
+  <%= yield %>
+</div>
+<div class="container" style="clear: both; text-align: center; color: #808080; padding: 35px 0px;">
+  &copy; 2012 Powered by BakGod
+</div>
+<script charset="utf-8" src="/js/lib/jquery-1.7.2.min.js"></script>
+<script charset="utf-8" src="/js/lib/jquery.timeago.js"></script>
+<script charset="utf-8" src="/js/lib/jquery.timeago.zh-CN.js"></script>
+<script charset="utf-8" src="/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/js/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/js/ajaxfileupload.js"></script>
+<script charset="utf-8" src="/js/index.js"></script>
+</body>
+</html>

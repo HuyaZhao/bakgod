@@ -1,0 +1,50 @@
+<div class="sidebar">
+  <div class="box" style="">
+    <div>
+      <div style="float:left; margin-right: 10px;">
+        <a href="/members/<%= current_user.account_id %>" style="display:block;">
+          <img width="100px" height="100px" src="<%= current_user.avatar(:medium) %>" />
+        </a>
+      </div>
+      <div style="">
+        <div style="color:#636A86"><%= current_user.username %></div>
+        <div style="margin-top: 10px; color: #808080; word-wrap: break-word;overflow: hidden;">
+          <%= current_user.description %>
+        </div>
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+</div>
+<div class="main radius">
+  <div style="padding: 5px 5px 15px 5px;">
+    <div style="padding: 10px 0px 20px 10px; color: #808080;">
+      创建话题
+    </div>
+    <div class="add" >
+      <form method="post" action="/topics" id="topic_add" autocomplete="off">
+        <div class="item">
+          <input name="topics[title]" class="text" type="text" value=""/>
+          <select name="topics[node]">
+            <option>选择分类</option>
+            <% @nodes.each do |field, value| %>
+                <option value="<%= value %>"><%= field %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="item">
+          <textarea id="topic_content" name="topics[content]" class="editor" style="width: 520px; height: 320px"></textarea>
+        </div>
+        <div class="item">
+          <div id="tag_input">
+            <input name="topics[tags]" class="text" type="text" style="width:360px;" placeholder="请用 空格 或者 英文逗号 分割" />(为该主题贴上标签)
+          </div>
+        </div>
+        <div>
+          <input class="reg_bottom" type="submit" value="创建" onclick="return topic_validate();" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

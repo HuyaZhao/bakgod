@@ -6,7 +6,7 @@
 
 感谢 [https://github.com/wenbo](wenbo)  提供空间. thanks.
 
-demo: [http://0371zhong.com:3000/](http://0371zhong.com:3000/).
+demo: [http://0371zhong.com:3389/](http://0371zhong.com:3389/).
 
 您需要安装的程序有: redis, memcached, ImageMagick, Nginx.
 

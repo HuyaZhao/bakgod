@@ -93,7 +93,8 @@ module BakGod
       @topic_attribute = model('topic_attribute').find params[:id]
       @topic_attribute.incr('click_count', 1)
       @topic_user      = @topic_attribute.user
-
+      
+      @node            = model('topic_node').all.invert[@topic_attribute.node_id]	
       @replies         = @topic.get_replies_by_created_at
       @rusers          = model('reply').users(@replies)
     end

@@ -20,7 +20,7 @@
   <div class="topic">
     <div class="topic_header"  style=" border-bottom: 1px solid #E2E2E2;" >
       <h1 style="font-size: 18px; font-weight: blod">
-        <a class="tag tag_12" href="/tag/%E9%9F%B3%E4%B9%90">音乐</a><%= @topic.title %>
+        <a class="tag tag_12" href="/nodes/<%= @topic_attribute.node_id %>"><%= @node %></a><%= @topic.title %>
       </h1>
       <div class="topic_info">
         <span><%= @topic_attribute.created_at.strftime('%Y-%m-%d %H:%M:%S') %>发布</span>
